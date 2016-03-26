@@ -11,7 +11,7 @@
      github地址：[lovetuzitong/MultiImageSelector](https://github.com/lovetuzitong/MultiImageSelector/blob/master/multi-image-selector/src/main/java/me/nereo/multi_image_selector/MultiImageSelectorActivity.java)
      
      
-> 2. 使用了photoview
+> 2. 使用了PhotoView,注意：使用HackyViewPager解决PhotoView与ViewPager的触摸事件冲突问题 `compile 'co  .uwetrottmann.photoview:library:1.2.4'`
 
 >3. 使用了hongyang博客   [Android-仿微信图片选择器](http://www.imooc.com/learn/489) 中的 ImageLoader类加载图片
 
