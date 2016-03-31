@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent;
     private GridView mGridView;
     private ImageAdapter adapter;
+    private Button mBtSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +60,28 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(openPreviewIntent, REQUEST_OPEN_PREVIEW);
             }
         });
+        mBtSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),"mSelectPath.size()"+mSelectPath.size(),Toast.LENGTH_LONG).show();
+
+                        for (int i = 0; i < mSelectPath.size(); i++) {
+
+                            final int finalI = i;
+                            new Thread(){
+                                @Override
+                                public void run() {
+                                    super.run();
+                                    Log.e("a", finalI + "");
+                                    Log.e("压缩后的图片的路径：", ImageUtils.saveBitmap(MainActivity.this, mSelectPath.get(finalI)));
+//                                    // TODO: 2016/3/31 拿到path后，可以把压缩后的图片上传到服务器
+                                }
+                            }.start();
+
+                        }
+                    }
+
+        });
     }
 
     private void initIntent() {
@@ -80,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         mBtOpen = (Button) findViewById(R.id.bt_open);
         mTv = (TextView) findViewById(R.id.tv);
         mGridView = (GridView) findViewById(R.id.grid);
+        mBtSave = (Button) findViewById(R.id.bt_save);
     }
 
     @Override

@@ -26,4 +26,5 @@ dependencies {
     compile 'com.android.support:design:23.1.1'
     compile project(':multi-image-selector')
     compile 'com.uwetrottmann.photoview:library:1.2.4'
+    compile 'com.squareup.picasso:picasso:2.4.0'
 }

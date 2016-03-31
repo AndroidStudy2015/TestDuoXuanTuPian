@@ -37,4 +37,12 @@
         android:layout_below="@+id/grid"
         android:layout_marginTop="30dp"
         android:text="Hello World!" />
+
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv"
+        android:layout_marginTop="30dp"
+        android:text="将所选图片压缩后保存在本地" />
 </RelativeLayout>

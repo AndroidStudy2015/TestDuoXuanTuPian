@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 import java.util.ArrayList;
 
 import uk.co.senab.photoview.PhotoView;
@@ -143,8 +146,16 @@ public class PreviewPicActivity extends AppCompatActivity {
 
             final PhotoView photoView = (PhotoView) view.findViewById(R.id.photoView);
 
+/*//        使用自己写的图片加载类压缩加载图片
+            ImageLoader.getInstance().loadImage(mImgPths.get(position), photoView);*/
 
-            ImageLoader.getInstance().loadImage(mImgPths.get(position), photoView);
+            ImageSize imageViewSize = ImageUtils.getImageViewSize(photoView);
+
+            //使用Picasso加载图片
+            Picasso.with(PreviewPicActivity.this)
+                    .load(new File(mImgPths.get(position)))
+                    .resize(imageViewSize.width, imageViewSize.height).centerInside()//记得使用centerInside，否则比例不协调
+                    .into(photoView);
 
             photoView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
