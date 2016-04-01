@@ -27,4 +27,5 @@ dependencies {
     compile project(':multi-image-selector')
     compile 'com.uwetrottmann.photoview:library:1.2.4'
     compile 'com.squareup.picasso:picasso:2.4.0'
+    compile 'com.yalantis:ucrop:1.3.+'
 }
